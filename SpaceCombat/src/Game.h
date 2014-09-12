@@ -3,6 +3,10 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
+// Space Combat
+//
+#include "SDLEvent.h"
+
 // SDL
 //
 #include <SDL/SDL.h>
@@ -15,7 +19,7 @@
 //==============================================================================
 namespace spacecombat
 {
-    class Game 
+    class Game : public SDLEvent
     {
         public:
             struct GameState
@@ -46,9 +50,9 @@ namespace spacecombat
 
             // App
             //      
-            int  OnExecute      ( );
+            void OnExecute      ( );
             void OnKeyDown      ( SDL_KeyboardEvent keyBoardEvent );
-            void OnKeyUp        ( SDL_KeyboardEvent keyBoardEvent );
+            void OnKeyUp        ( SDL_KeyboardEvent keyBoardEvent );            
             void OnResize       ( int width, int height );
             void OnExit         ( );
 

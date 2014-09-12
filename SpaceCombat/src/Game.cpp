@@ -86,29 +86,31 @@ namespace spacecombat
         return true;
     }
 
+    void Game::OnEvent( SDL_Event* event )
+    {       
+        SDLEvent::OnEvent( event );
+    }
+
     void Game::OnCleanup( )
     {
         SDL_FreeSurface( m_mainwindow );
         SDL_Quit( );
     }
 
-    int Game::OnExecute( )
+    void Game::OnExecute( )
     {
         if( OnInit( ) == false ) 
         {
             std::cout << "SDL Init error!\n";
-            return -1;
+            return;
         }
 
         SDL_Event event;
         while( m_state == GameState::RUNNING ) 
         {
             if( SDL_PollEvent( &event ))
-            {  
-                if( event.type == SDL_QUIT )
-                {
-                    m_state = GameState::QUIT;
-                }
+            {              
+                OnEvent( &event );
             }            
 
             // Update
@@ -119,12 +121,25 @@ namespace spacecombat
             //
             OnRender( );
 
+            // TODO: Implement time handling
+            //
             ++m_nUpdates;
         }
 
         OnCleanup( );
 
-        return 0;    
+        //return 0;    
+    }
+
+    void Game::OnKeyDown( SDL_KeyboardEvent keyBoardEvent )
+    {}
+
+    void Game::OnKeyUp( SDL_KeyboardEvent keyBoardEvent )
+    {
+        if( keyBoardEvent.keysym.sym == SDLK_ESCAPE )
+        {            
+            OnExit( );
+        }
     }
 
     void Game::OnResize( int width, int height )
