@@ -5,6 +5,10 @@
 
 namespace spacecombat
 {    
+    // TODO: Not very happy with the way this looks or works
+    // maybe change this later to something I feel 
+    // more comfortable with.
+    //
     void SetGLOrtho( int width, int height )
     {
         float halfWidth  = width * 0.5f;
