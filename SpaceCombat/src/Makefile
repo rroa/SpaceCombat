@@ -1,7 +1,7 @@
 CC=clang++
 CFLAGS=-c -Wall
-LDFLAGS=-lGL -lGLU -lglut
-SOURCES=quads.cpp
+LDFLAGS=-lGL -lSDL
+SOURCES=$(wildcard *.c *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=SpaceCombat
 
