@@ -1,0 +1,15 @@
+OUTDIR=html_output
+SOURCES=$(wildcard *.c *.cpp)
+OUT=$(OUTDIR)/out.html
+
+# Emscripten
+EMCC=em++
+EMCCFLAGS=-O2 -s ALLOW_MEMORY_GROWTH=1 -s LEGACY_GL_EMULATION=1
+
+# Let's build
+
+output:
+	mkdir -p $(OUTDIR)
+	$(EMCC) $(SOURCES) $(EMCCFLAGS) -o $(OUT)
+clean:
+	rm -rf $(OUTDIR)
