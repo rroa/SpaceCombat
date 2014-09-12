@@ -42,3 +42,11 @@
   'emscripten_set_main_loop' function call inside my game class.
   * Right now in its actual form, even though it compiles, it doesn't work properly on the browser the WebGL is not being created properly.
 * I'll look at it later.
+
+5:00PM
+---
+
+* So, after an unexpected long sleep I'm back at this.
+* I decided to leave the EMSCRIPTEN and touch input issue to a side and come back to that later.
+* I'm changing my code back to what it was and I'll leave the macro check for EMSCRIPTEN at the SDLEvent wrapper class for now.
+

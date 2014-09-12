@@ -97,19 +97,28 @@ namespace spacecombat
         SDL_Quit( );
     }
 
-    void Game::OnExecute( )
+    int Game::OnExecute( )
     {
         if( OnInit( ) == false ) 
         {
             std::cout << "SDL Init error!\n";
-            return;
+            return -1;
         }
 
         SDL_Event event;
         while( m_state == GameState::RUNNING ) 
         {
             if( SDL_PollEvent( &event ))
-            {              
+            {   
+                // Clean exit if window is closed
+                //
+                if( event.type == SDL_QUIT ) 
+                {
+                    OnExit( );
+                }
+
+                // Handle the current event
+                //
                 OnEvent( &event );
             }            
 
@@ -128,7 +137,7 @@ namespace spacecombat
 
         OnCleanup( );
 
-        //return 0;    
+        return 0;    
     }
 
     void Game::OnKeyDown( SDL_KeyboardEvent keyBoardEvent )

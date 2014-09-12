@@ -50,7 +50,7 @@ namespace spacecombat
 
             // App
             //      
-            void OnExecute      ( );
+            int  OnExecute      ( );
             void OnKeyDown      ( SDL_KeyboardEvent keyBoardEvent );
             void OnKeyUp        ( SDL_KeyboardEvent keyBoardEvent );            
             void OnResize       ( int width, int height );
