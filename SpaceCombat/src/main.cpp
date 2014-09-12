@@ -9,13 +9,19 @@
 const int WIDTH         = 1136;
 const int HEIGHT        = 640;
 
+void loop()
+{
+    spacecombat::Game theGame( "Space Combat", WIDTH, HEIGHT );
+    theGame.OnExecute();
+}
+
 int main(int argc, char** argv)
 {    
-    spacecombat::Game theGame( "Space Combat", WIDTH, HEIGHT );
+    
 #ifdef EMSCRIPTEN    
-    //emscripten_set_main_loop( theGame.OnExecute(), 60, true );    
+    emscripten_set_main_loop( loop, 0, true );
 #else
-    theGame.OnExecute();    
+    loop();    
 #endif
     return 0;
 }
